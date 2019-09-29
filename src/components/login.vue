@@ -28,15 +28,23 @@ export default {
 
   },
   methods: {
-handleLogin(){
-  this.$http.post(`login`,this.formdata).then((res)=>{
-    const {data:{data,meta:{msg,status}}} = res
+async handleLogin(){
+  const res = await this.$http.post(`login`,this.formdata)
+  console.log(res)
+ const {
+   data:{data:{token},
+   meta:{msg,status}}
+   } = res
     if(status===200){
+
+      localStorage.setItem('abc',token)
+      this.$router.push({
+        name:'home'
+      })
      this.$message.success(msg)
     }else{
      this.$message.error(msg)
     }
-  })
 }
   },
   components: {
