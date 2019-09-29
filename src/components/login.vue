@@ -37,7 +37,7 @@ async handleLogin(){
    } = res
     if(status===200){
 
-      localStorage.setItem('abc',token)
+      localStorage.setItem('token',token)
       this.$router.push({
         name:'home'
       })
